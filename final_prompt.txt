@@ -6,7 +6,7 @@ You are a senior frontend engineer. Please generate a complete UI Case sample ac
    (1) Add a Daily Health Record
        Add a new daily record with date, step count, workout duration (minutes), and average heart rate.
    (2) Edit an Existing Health Record
-       Modify an existing record’s details, including steps, workout duration, and heart rate.
+       Modify an existing record's details, including steps, workout duration, and heart rate.
    (3) Delete a Health Record
        Remove an existing daily health record from the list.
    (4) View Health Records List

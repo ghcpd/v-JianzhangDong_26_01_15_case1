@@ -1,0 +1,371 @@
+/**
+ * ============================================================================
+ * SUMMARY DASHBOARD COMPONENT - STYLES
+ * ============================================================================
+ * 
+ * Color Palette:
+ * - Steps: #4CAF50 (Vibrant Green)
+ * - Workout: #66BB6A (Light Green)
+ * - Heart Rate: #E53935 (Red) for icon, green variations for zones
+ * - Background: #FFFFFF with subtle green tint
+ * - Borders: rgba(46, 125, 50, 0.1)
+ * 
+ * Typography:
+ * - Section title: 1.5rem (24px), font-weight 600
+ * - Stat label: 0.875rem (14px), muted color
+ * - Stat value: 2rem (32px), font-weight 700
+ * 
+ * Spacing:
+ * - Card padding: 1.5rem (24px)
+ * - Grid gap: 1.5rem (24px)
+ * - Section margin: 2rem (32px) bottom
+ * ============================================================================
+ */
+
+.summary-dashboard {
+  /* Section container */
+  background: linear-gradient(135deg, rgba(232, 245, 233, 0.5) 0%, rgba(255, 255, 255, 1) 100%);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(46, 125, 50, 0.1);
+  box-shadow: 0 4px 20px rgba(46, 125, 50, 0.08);
+}
+
+.section-title {
+  /* Section heading */
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2E7D32;
+  margin: 0 0 1.5rem 0;
+}
+
+.section-title svg {
+  width: 28px;
+  height: 28px;
+  color: #43A047;
+}
+
+/* =========================================================================
+   STATISTICS CARDS GRID
+   ========================================================================= */
+
+.stats-grid {
+  /* 3-column grid layout */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  /* Individual stat card */
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(46, 125, 50, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(46, 125, 50, 0.15);
+}
+
+/* Card accent borders */
+.stat-card-steps {
+  border-top: 4px solid #4CAF50;
+}
+
+.stat-card-workout {
+  border-top: 4px solid #66BB6A;
+}
+
+.stat-card-heart {
+  border-top: 4px solid #E53935;
+}
+
+.stat-icon {
+  /* Icon container */
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.stat-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.steps-icon {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4CAF50;
+}
+
+.workout-icon {
+  background: rgba(102, 187, 106, 0.15);
+  color: #66BB6A;
+}
+
+.heart-icon {
+  background: rgba(229, 57, 53, 0.15);
+  color: #E53935;
+}
+
+.stat-content {
+  /* Stat text content */
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #757575;
+  margin-bottom: 0.25rem;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2E7D32;
+  line-height: 1.2;
+}
+
+.stat-value small {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #66BB6A;
+}
+
+.stat-sublabel {
+  font-size: 0.75rem;
+  color: #9E9E9E;
+  margin-top: 0.25rem;
+}
+
+/* =========================================================================
+   PROGRESS BARS
+   ========================================================================= */
+
+.stat-progress {
+  /* Progress bar container */
+  height: 8px;
+  background: #E8F5E9;
+  border-radius: 4px;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  /* Progress bar fill */
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.steps-progress {
+  background: linear-gradient(90deg, #4CAF50 0%, #81C784 100%);
+}
+
+.workout-progress {
+  background: linear-gradient(90deg, #66BB6A 0%, #A5D6A7 100%);
+}
+
+.progress-label {
+  font-size: 0.7rem;
+  color: #9E9E9E;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+/* =========================================================================
+   HEART RATE INDICATOR
+   ========================================================================= */
+
+.heart-rate-indicator {
+  margin-top: 1rem;
+}
+
+.heart-zones {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.zone {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: #F5F5F5;
+  color: #9E9E9E;
+  transition: all 0.3s ease;
+}
+
+.zone.active {
+  background: #E8F5E9;
+  color: #2E7D32;
+  font-weight: 600;
+}
+
+/* =========================================================================
+   WEEKLY CHART
+   ========================================================================= */
+
+.weekly-chart-container {
+  /* Chart container */
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(46, 125, 50, 0.1);
+}
+
+.chart-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #424242;
+  margin: 0 0 1.5rem 0;
+}
+
+.chart-title svg {
+  width: 20px;
+  height: 20px;
+  color: #66BB6A;
+}
+
+.weekly-chart {
+  /* Chart bars container */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 200px;
+  padding: 0 1rem;
+}
+
+.chart-bar-container {
+  /* Individual bar container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  max-width: 80px;
+}
+
+.chart-bar-wrapper {
+  /* Bar wrapper for alignment */
+  height: 160px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.chart-bar {
+  /* The actual bar */
+  width: 40px;
+  min-height: 4px;
+  background: linear-gradient(180deg, #43A047 0%, #81C784 100%);
+  border-radius: 8px 8px 0 0;
+  transition: height 0.5s ease, background 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.chart-bar:hover {
+  background: linear-gradient(180deg, #2E7D32 0%, #66BB6A 100%);
+}
+
+.bar-value {
+  /* Value label on bar */
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #2E7D32;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.chart-bar:hover .bar-value {
+  opacity: 1;
+}
+
+.chart-label {
+  /* Day label below bar */
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #757575;
+  margin-top: 0.75rem;
+}
+
+.no-data-message {
+  text-align: center;
+  color: #9E9E9E;
+  font-style: italic;
+  padding: 2rem;
+}
+
+/* =========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .stat-card-heart {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .summary-dashboard {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-card-heart {
+    grid-column: auto;
+  }
+  
+  .weekly-chart {
+    height: 150px;
+  }
+  
+  .chart-bar-wrapper {
+    height: 120px;
+  }
+  
+  .chart-bar {
+    width: 30px;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,179 @@
+/**
+ * ============================================================================
+ * HEADER COMPONENT - STYLES
+ * ============================================================================
+ * 
+ * Color Palette:
+ * - Primary gradient: #2E7D32 (Forest Green) to #43A047 (Medium Green)
+ * - Text: #FFFFFF (White)
+ * - Button: rgba(255,255,255,0.2) with hover effect
+ * 
+ * Typography:
+ * - Title: 1.75rem (28px), font-weight 700
+ * - Subtitle: 0.875rem (14px), font-weight 400, reduced opacity
+ * 
+ * Spacing:
+ * - Horizontal padding: 2rem (32px)
+ * - Vertical padding: 1rem (16px)
+ * - Icon margin: 1rem (16px)
+ * ============================================================================
+ */
+
+.header {
+  /* Gradient background using primary green colors */
+  background: linear-gradient(135deg, #2E7D32 0%, #43A047 100%);
+  
+  /* Fixed positioning for persistent header */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  
+  /* Shadow for depth */
+  box-shadow: 0 4px 20px rgba(46, 125, 50, 0.3);
+}
+
+.header-content {
+  /* Flexbox layout for horizontal alignment */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  /* Container constraints */
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+.header-brand {
+  /* Flex layout for icon and text */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-icon {
+  /* Icon container styling */
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Animation on hover */
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.header-icon:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.header-icon svg {
+  width: 28px;
+  height: 28px;
+  color: #FFFFFF;
+}
+
+.header-text {
+  /* Text container */
+  display: flex;
+  flex-direction: column;
+}
+
+.header-title {
+  /* Main title styling */
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.header-subtitle {
+  /* Subtitle styling */
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0.25rem 0 0 0;
+}
+
+.add-record-btn {
+  /* Button base styling */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  
+  /* Colors */
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  
+  /* Shape and spacing */
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  
+  /* Typography */
+  font-size: 1rem;
+  font-weight: 600;
+  
+  /* Cursor and transition */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-record-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.add-record-btn:active {
+  transform: translateY(0);
+}
+
+.add-record-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* =========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================= */
+
+/* Tablet and smaller */
+@media (max-width: 768px) {
+  .header-content {
+    padding: 1rem;
+  }
+  
+  .header-title {
+    font-size: 1.25rem;
+  }
+  
+  .header-subtitle {
+    font-size: 0.75rem;
+  }
+  
+  .header-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .header-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .add-record-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .add-record-btn span {
+    /* Hide text on small screens */
+    display: none;
+  }
+}
