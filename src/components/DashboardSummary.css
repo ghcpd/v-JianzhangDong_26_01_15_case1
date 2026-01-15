@@ -1,0 +1,365 @@
+/**
+ * DashboardSummary.css - Styles for the dashboard summary component
+ * 
+ * Layout:
+ * - Three-column card layout for statistics
+ * - Responsive grid that stacks on smaller screens
+ * - Progress bars and badges for visual feedback
+ * 
+ * Colors:
+ * - Steps Card: Blue tones (#2196F3)
+ * - Workout Card: Orange tones (#FF9800)
+ * - Heart Rate Card: Red/Pink tones (#E91E63)
+ * - Progress Bars: Gradients with primary green
+ * - Badges: Context-specific colors (success, warning, danger)
+ * 
+ * Visual Elements:
+ * - Card shadows and hover effects
+ * - Animated progress bars
+ * - Color-coded status badges
+ * - Icon-enhanced statistics
+ * 
+ * Typography:
+ * - Card Values: 2rem, bold
+ * - Card Labels: 0.9rem, uppercase
+ * - Sublabels: 0.85rem, lighter color
+ */
+
+.dashboard-summary {
+  /* Container inherits from .section */
+}
+
+/* ===== DASHBOARD HEADER ===== */
+.dashboard-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #E8F5E9;
+}
+
+.dashboard-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2E7D32;
+  margin-bottom: 8px;
+}
+
+.dashboard-description {
+  font-size: 0.95rem;
+  color: #666666;
+  margin: 0;
+}
+
+/* ===== SUMMARY CARDS ===== */
+.summary-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.summary-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.summary-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Card-specific border colors */
+.steps-card {
+  border-left-color: #2196F3;
+  background: linear-gradient(135deg, #ffffff 0%, #E3F2FD 100%);
+}
+
+.workout-card {
+  border-left-color: #FF9800;
+  background: linear-gradient(135deg, #ffffff 0%, #FFF3E0 100%);
+}
+
+.heartrate-card {
+  border-left-color: #E91E63;
+  background: linear-gradient(135deg, #ffffff 0%, #FCE4EC 100%);
+}
+
+/* Card Layout */
+.card-icon {
+  font-size: 2.5rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  opacity: 0.3;
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.card-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #666666;
+  margin-bottom: 8px;
+}
+
+.card-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2E7D32;
+  margin-bottom: 4px;
+  line-height: 1;
+}
+
+.card-value .unit {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666666;
+  margin-left: 4px;
+}
+
+.card-sublabel {
+  font-size: 0.85rem;
+  color: #999999;
+  margin: 0;
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: #E0E0E0;
+  border-radius: 4px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.steps-progress {
+  background: linear-gradient(90deg, #2196F3 0%, #64B5F6 100%);
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progress-text {
+  font-size: 0.8rem;
+  color: #666666;
+  margin-top: 6px;
+  margin-bottom: 0;
+  text-align: right;
+}
+
+/* ===== BADGES ===== */
+.status-badge,
+.consistency-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 12px;
+}
+
+/* Heart Rate Status Badges */
+.status-good {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+}
+
+.status-warning {
+  background-color: #FFF3E0;
+  color: #E65100;
+}
+
+.status-alert {
+  background-color: #FFEBEE;
+  color: #C62828;
+}
+
+.status-neutral {
+  background-color: #F5F5F5;
+  color: #757575;
+}
+
+/* Workout Consistency Badges */
+.consistency-excellent {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+}
+
+.consistency-good {
+  background-color: #E3F2FD;
+  color: #1565C0;
+}
+
+.consistency-fair {
+  background-color: #FFF3E0;
+  color: #E65100;
+}
+
+.consistency-poor {
+  background-color: #FFEBEE;
+  color: #C62828;
+}
+
+.consistency-none {
+  background-color: #F5F5F5;
+  color: #757575;
+}
+
+/* ===== INSIGHTS SECTION ===== */
+.insights-section {
+  background: linear-gradient(135deg, #E8F5E9 0%, #F1F8F4 100%);
+  border-radius: 8px;
+  padding: 16px 20px;
+  border: 1px solid #C8E6C9;
+}
+
+.insights-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2E7D32;
+  margin-bottom: 12px;
+}
+
+.insights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.insight-item {
+  font-size: 0.95rem;
+  color: #424242;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.insight-item::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #4CAF50;
+  font-weight: 700;
+}
+
+.insight-item:last-child {
+  margin-bottom: 0;
+}
+
+.insight-item strong {
+  color: #2E7D32;
+  font-weight: 700;
+}
+
+.insight-item.highlight {
+  color: #2E7D32;
+  font-weight: 600;
+  background-color: rgba(76, 175, 80, 0.1);
+  padding: 8px 8px 8px 20px;
+  border-radius: 6px;
+  margin: 8px 0;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-dashboard {
+  text-align: center;
+  padding: 32px 16px;
+  background: linear-gradient(135deg, #F1F8F4 0%, #E8F5E9 100%);
+  border-radius: 8px;
+  border: 2px dashed #A5D6A7;
+}
+
+.empty-message {
+  font-size: 1rem;
+  color: #666666;
+  margin: 0;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 1.25rem;
+  }
+
+  .summary-cards {
+    gap: 12px;
+  }
+
+  .summary-card {
+    padding: 16px;
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    top: 16px;
+    right: 16px;
+  }
+
+  .card-value {
+    font-size: 1.75rem;
+  }
+
+  .insights-section {
+    padding: 12px 16px;
+  }
+
+  .insights-title {
+    font-size: 1rem;
+  }
+
+  .insight-item {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-value {
+    font-size: 1.5rem;
+  }
+
+  .card-icon {
+    font-size: 1.75rem;
+  }
+}
