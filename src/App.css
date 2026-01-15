@@ -1,0 +1,189 @@
+/**
+ * App.css - Main application styles
+ * 
+ * Layout Structure:
+ * - Header: Fixed top header with title and subtitle
+ * - Container: Two-column responsive layout
+ *   - Left Column: Form and Summary (40% width)
+ *   - Right Column: Records List (60% width)
+ * - Footer: Fixed bottom footer
+ * 
+ * Color Scheme (Green Health Theme):
+ * - Primary: #4CAF50 (vibrant green)
+ * - Secondary: #81C784 (light green)
+ * - Accent: #388E3C (dark green)
+ * - Background: #F1F8F4 (very light green)
+ * - Card Background: #FFFFFF (white)
+ * 
+ * Spacing:
+ * - Padding: 16px, 24px, 32px
+ * - Margin: 8px, 16px, 24px
+ * - Border Radius: 8px, 12px
+ * 
+ * Responsiveness:
+ * - Desktop: Two-column layout
+ * - Tablet/Mobile: Single-column stacked layout
+ */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #E8F5E9 0%, #F1F8F4 100%);
+}
+
+/* ===== HEADER STYLES ===== */
+.app-header {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  color: white;
+  padding: 32px 24px;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+  text-align: center;
+}
+
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.app-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.app-title .icon {
+  font-size: 2.8rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.app-subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.95;
+  letter-spacing: 0.5px;
+}
+
+/* ===== MAIN CONTAINER ===== */
+.app-container {
+  flex: 1;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  gap: 24px;
+}
+
+/* ===== COLUMN LAYOUTS ===== */
+.left-column,
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ===== SECTION STYLES ===== */
+.section {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.section:hover {
+  box-shadow: 0 4px 16px rgba(76, 175, 80, 0.15);
+}
+
+/* ===== FOOTER STYLES ===== */
+.app-footer {
+  background: linear-gradient(135deg, #388E3C 0%, #4CAF50 100%);
+  color: white;
+  text-align: center;
+  padding: 16px 24px;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.app-footer p {
+  margin: 0;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet Layout (768px - 1024px) */
+@media (max-width: 1024px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    padding: 24px 16px;
+  }
+
+  .app-title {
+    font-size: 2rem;
+  }
+
+  .app-subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Layout (< 768px) */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 24px 16px;
+  }
+
+  .app-title {
+    font-size: 1.75rem;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .app-title .icon {
+    font-size: 2.2rem;
+  }
+
+  .app-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .app-container {
+    padding: 16px 12px;
+    gap: 16px;
+  }
+
+  .section {
+    padding: 16px;
+  }
+
+  .app-footer {
+    font-size: 0.8rem;
+    padding: 12px 16px;
+  }
+}
+
+/* Extra Small Devices (< 480px) */
+@media (max-width: 480px) {
+  .app-title {
+    font-size: 1.5rem;
+  }
+
+  .app-title .icon {
+    font-size: 2rem;
+  }
+}

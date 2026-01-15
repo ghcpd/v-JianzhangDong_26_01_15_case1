@@ -1,0 +1,340 @@
+/**
+ * HealthRecordsList.css - Styles for the health records list component
+ * 
+ * Layout:
+ * - Responsive table layout that converts to cards on mobile
+ * - Fixed header row with scrollable body
+ * - Action buttons aligned to the right
+ * 
+ * Colors:
+ * - Table Header: #E8F5E9 (light green background)
+ * - Row Hover: #F1F8F4 (very light green)
+ * - Edit Button: #2196F3 (blue)
+ * - Delete Button: #F44336 (red)
+ * - Heart Rate Badges:
+ *   - Low: #FFC107 (amber)
+ *   - Normal: #4CAF50 (green)
+ *   - High: #FF5722 (deep orange)
+ * 
+ * Typography:
+ * - Header: 1rem, bold
+ * - Data cells: 0.95rem
+ * - Badges: 0.75rem, uppercase
+ * 
+ * Spacing:
+ * - Cell padding: 12px 16px
+ * - Row gap: 8px (in mobile view)
+ */
+
+.health-records-list {
+  /* Container inherits from .section */
+}
+
+/* ===== LIST HEADER ===== */
+.list-header {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #E8F5E9;
+}
+
+.list-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2E7D32;
+  margin-bottom: 8px;
+}
+
+.list-description {
+  font-size: 0.95rem;
+  color: #666666;
+  margin: 0;
+}
+
+.record-count {
+  font-weight: 700;
+  color: #4CAF50;
+  font-size: 1.1rem;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: #666666;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+
+.empty-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2E7D32;
+  margin-bottom: 8px;
+}
+
+.empty-message {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ===== TABLE STYLES ===== */
+.table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #E8F5E9;
+}
+
+.records-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.records-table thead {
+  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.records-table th {
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 700;
+  color: #2E7D32;
+  font-size: 1rem;
+  border-bottom: 2px solid #A5D6A7;
+}
+
+.records-table tbody tr {
+  border-bottom: 1px solid #E8F5E9;
+  transition: background-color 0.2s ease;
+}
+
+.records-table tbody tr:hover {
+  background-color: #F1F8F4;
+}
+
+.records-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.records-table td {
+  padding: 12px 16px;
+  color: #2E7D32;
+}
+
+/* ===== TABLE CELLS ===== */
+.date-cell {
+  font-weight: 600;
+  min-width: 140px;
+}
+
+.date-text {
+  display: block;
+}
+
+.steps-cell,
+.workout-cell,
+.heartrate-cell {
+  white-space: nowrap;
+}
+
+.metric-value {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-right: 4px;
+}
+
+.metric-unit {
+  font-size: 0.85rem;
+  color: #666666;
+  margin-right: 4px;
+}
+
+.metric-icon {
+  font-size: 1rem;
+  margin-left: 4px;
+}
+
+/* Heart Rate Badge */
+.hr-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-left: 8px;
+}
+
+.hr-low {
+  background-color: #FFF3E0;
+  color: #E65100;
+}
+
+.hr-normal {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+}
+
+.hr-high {
+  background-color: #FFEBEE;
+  color: #C62828;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.actions-cell {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.action-btn {
+  padding: 6px 10px;
+  margin: 0 4px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+  background: transparent;
+  outline: none;
+}
+
+.action-btn:hover {
+  transform: scale(1.15);
+}
+
+.action-btn:active {
+  transform: scale(1);
+}
+
+.edit-btn:hover {
+  background-color: #E3F2FD;
+}
+
+.delete-btn:hover {
+  background-color: #FFEBEE;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet View */
+@media (max-width: 1024px) {
+  .records-table {
+    font-size: 0.9rem;
+  }
+
+  .records-table th,
+  .records-table td {
+    padding: 10px 12px;
+  }
+
+  .metric-icon {
+    display: none;
+  }
+}
+
+/* Mobile View - Convert table to cards */
+@media (max-width: 768px) {
+  .table-container {
+    border: none;
+  }
+
+  .records-table,
+  .records-table thead,
+  .records-table tbody,
+  .records-table tr,
+  .records-table th,
+  .records-table td {
+    display: block;
+  }
+
+  .records-table thead {
+    display: none;
+  }
+
+  .records-table tbody tr {
+    margin-bottom: 16px;
+    border: 2px solid #E8F5E9;
+    border-radius: 8px;
+    padding: 16px;
+    background: white;
+  }
+
+  .records-table tbody tr:hover {
+    background: #F1F8F4;
+  }
+
+  .records-table td {
+    padding: 8px 0;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .records-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #2E7D32;
+    margin-right: 12px;
+  }
+
+  .date-cell::before {
+    content: '📅 Date: ';
+  }
+
+  .steps-cell::before {
+    content: '👟 Steps: ';
+  }
+
+  .workout-cell::before {
+    content: '⏱️ Workout: ';
+  }
+
+  .heartrate-cell::before {
+    content: '❤️ Heart Rate: ';
+  }
+
+  .actions-cell {
+    text-align: center;
+    justify-content: center;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #E8F5E9;
+  }
+
+  .actions-cell::before {
+    display: none;
+  }
+
+  .action-btn {
+    padding: 8px 16px;
+    margin: 0 6px;
+    font-size: 1.3rem;
+  }
+
+  .metric-icon {
+    display: inline;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+  .list-title {
+    font-size: 1.25rem;
+  }
+
+  .empty-icon {
+    font-size: 3rem;
+  }
+
+  .records-table tbody tr {
+    padding: 12px;
+  }
+}

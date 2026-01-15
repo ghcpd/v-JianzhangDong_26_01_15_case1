@@ -1,0 +1,64 @@
+/**
+ * Global styles for the application
+ * 
+ * Color Palette:
+ * - Primary Green: #4CAF50
+ * - Light Green: #81C784
+ * - Dark Green: #388E3C
+ * - Background: #F1F8F4
+ * - White: #FFFFFF
+ * - Text Dark: #2E7D32
+ * - Text Gray: #666666
+ * - Border: #A5D6A7
+ * 
+ * Typography:
+ * - Font Family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+ * - Base Font Size: 16px
+ * - Line Height: 1.6
+ * 
+ * Spacing System:
+ * - Extra Small: 4px
+ * - Small: 8px
+ * - Medium: 16px
+ * - Large: 24px
+ * - Extra Large: 32px
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #2E7D32;
+  background-color: #F1F8F4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E8F5E9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #81C784;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4CAF50;
+}
