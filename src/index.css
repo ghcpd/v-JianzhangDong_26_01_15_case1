@@ -1,0 +1,183 @@
+/**
+ * ============================================================================
+ * GLOBAL STYLES & CSS RESET
+ * ============================================================================
+ * 
+ * This file contains global styles, CSS variables, and base styling for the
+ * Health & Fitness Dashboard application.
+ * 
+ * =============================================================================
+ * COLOR PALETTE (Green Health Theme)
+ * =============================================================================
+ * 
+ * PRIMARY COLORS:
+ * - Forest Green (#2E7D32): Primary brand color, headers, important text
+ * - Medium Green (#43A047): Secondary actions, icons, accents
+ * - Light Green (#66BB6A): Tertiary elements, workout indicators
+ * - Pale Green (#81C784): Hover states, subtle accents
+ * - Very Light Green (#A5D6A7): Light accents, progress bar fills
+ * - Background Green (#E8F5E9): Light backgrounds, cards, containers
+ * 
+ * ACCENT COLORS:
+ * - Red (#E53935): Heart rate indicators, delete actions, warnings
+ * - Light Red (#FFEBEE): Delete button backgrounds
+ * 
+ * NEUTRAL COLORS:
+ * - Dark Gray (#212121): Headings, primary text
+ * - Medium Dark Gray (#424242): Body text
+ * - Gray (#616161): Secondary text
+ * - Light Gray (#757575): Muted text
+ * - Very Light Gray (#9E9E9E): Placeholders, disabled
+ * - Subtle Gray (#BDBDBD): Borders
+ * - Pale Gray (#E0E0E0): Light borders, dividers
+ * - Near White (#F5F5F5): Backgrounds
+ * - Off White (#FAFAFA): Card backgrounds
+ * - White (#FFFFFF): Base backgrounds
+ * 
+ * =============================================================================
+ * TYPOGRAPHY
+ * =============================================================================
+ * 
+ * FONT FAMILY:
+ * - Primary: 'Inter', sans-serif (Google Fonts)
+ * - Fallback: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto
+ * 
+ * FONT SIZES:
+ * - xs: 0.625rem (10px) - Labels, minor text
+ * - sm: 0.75rem (12px) - Hints, timestamps
+ * - base: 0.875rem (14px) - Regular text, labels
+ * - md: 1rem (16px) - Body text, inputs
+ * - lg: 1.125rem (18px) - Emphasized text
+ * - xl: 1.25rem (20px) - Section titles
+ * - 2xl: 1.5rem (24px) - Major headings
+ * - 3xl: 1.75rem (28px) - App title
+ * - 4xl: 2rem (32px) - Large numbers, stats
+ * 
+ * FONT WEIGHTS:
+ * - Regular: 400 - Body text
+ * - Medium: 500 - Labels, subtitles
+ * - Semibold: 600 - Headings, buttons
+ * - Bold: 700 - App title, stat values
+ * 
+ * =============================================================================
+ * SPACING SYSTEM (8px base)
+ * =============================================================================
+ * 
+ * - 0.25rem (4px): Micro spacing
+ * - 0.5rem (8px): Tight spacing
+ * - 0.75rem (12px): Compact spacing
+ * - 1rem (16px): Standard spacing
+ * - 1.25rem (20px): Comfortable spacing
+ * - 1.5rem (24px): Generous spacing
+ * - 2rem (32px): Section spacing
+ * - 3rem (48px): Large section gaps
+ * - 4rem (64px): Major section divisions
+ * 
+ * =============================================================================
+ * BORDER RADIUS
+ * =============================================================================
+ * 
+ * - 4px: Small elements (progress bars, badges)
+ * - 8px: Buttons, small cards
+ * - 12px: Inputs, medium cards
+ * - 16px: Large cards
+ * - 20px: Major containers, sections
+ * - 50%: Circular elements (icons, avatars)
+ * 
+ * =============================================================================
+ * SHADOWS
+ * =============================================================================
+ * 
+ * - Subtle: 0 2px 12px rgba(0, 0, 0, 0.06) - Cards
+ * - Medium: 0 4px 20px rgba(0, 0, 0, 0.08) - Elevated cards
+ * - Strong: 0 8px 24px rgba(46, 125, 50, 0.15) - Hover states
+ * - Overlay: 0 20px 60px rgba(0, 0, 0, 0.3) - Modals
+ * 
+ * ============================================================================
+ */
+
+/* =========================================================================
+   CSS RESET & BASE STYLES
+   ========================================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* Base font size for rem calculations */
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  /* Typography */
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #424242;
+  
+  /* Background with subtle green tint */
+  background: linear-gradient(180deg, #F1F8E9 0%, #E8F5E9 50%, #F5F5F5 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* =========================================================================
+   SCROLLBAR STYLING
+   ========================================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E8F5E9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #81C784;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #66BB6A;
+}
+
+/* =========================================================================
+   SELECTION STYLING
+   ========================================================================= */
+
+::selection {
+  background: #81C784;
+  color: #FFFFFF;
+}
+
+/* =========================================================================
+   FOCUS STYLING (Accessibility)
+   ========================================================================= */
+
+:focus-visible {
+  outline: 2px solid #4CAF50;
+  outline-offset: 2px;
+}
+
+/* =========================================================================
+   LINK STYLING
+   ========================================================================= */
+
+a {
+  color: #2E7D32;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #1B5E20;
+  text-decoration: underline;
+}

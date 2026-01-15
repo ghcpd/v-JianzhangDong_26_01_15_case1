@@ -1,0 +1,428 @@
+/**
+ * ============================================================================
+ * HEALTH RECORDS LIST COMPONENT - STYLES
+ * ============================================================================
+ * 
+ * Color Palette:
+ * - Background: #FFFFFF
+ * - Steps icon: #4CAF50 (Green)
+ * - Workout icon: #66BB6A (Light Green)
+ * - Heart icon: #E53935 (Red)
+ * - Edit button: #43A047 (Green)
+ * - Delete button: #E53935 (Red)
+ * - Table header: #F5F5F5
+ * - Hover row: #FAFAFA
+ * 
+ * Typography:
+ * - Table header: 0.75rem (12px), uppercase, font-weight 600
+ * - Metric value: 1.125rem (18px), font-weight 600
+ * - Metric label: 0.75rem (12px), muted
+ * 
+ * Spacing:
+ * - Section padding: 2rem (32px)
+ * - Table cell padding: 1rem (16px)
+ * - Card padding: 1.25rem (20px)
+ * ============================================================================
+ */
+
+.records-section {
+  /* Section container */
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(46, 125, 50, 0.1);
+}
+
+.records-header {
+  /* Header with title and count */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  /* Section heading (shared style) */
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2E7D32;
+  margin: 0;
+}
+
+.section-title svg {
+  width: 28px;
+  height: 28px;
+  color: #43A047;
+}
+
+.record-count {
+  /* Record count badge */
+  background: #E8F5E9;
+  color: #2E7D32;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* =========================================================================
+   EMPTY STATE
+   ========================================================================= */
+
+.empty-state {
+  /* Empty state container */
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.empty-icon {
+  /* Icon container */
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: #E8F5E9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-icon svg {
+  width: 40px;
+  height: 40px;
+  color: #81C784;
+}
+
+.empty-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #424242;
+  margin: 0 0 0.5rem 0;
+}
+
+.empty-description {
+  font-size: 1rem;
+  color: #757575;
+  margin: 0;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* =========================================================================
+   RECORDS TABLE (Desktop)
+   ========================================================================= */
+
+.records-table-container {
+  /* Table container with horizontal scroll */
+  overflow-x: auto;
+}
+
+.records-table {
+  /* Table base styling */
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.records-table thead tr {
+  /* Table header row */
+  background: #F5F5F5;
+}
+
+.records-table th {
+  /* Table header cell */
+  padding: 1rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #757575;
+  border-bottom: 2px solid #E8F5E9;
+}
+
+.records-table th:last-child {
+  text-align: right;
+}
+
+.record-row {
+  /* Table body row */
+  border-bottom: 1px solid #F5F5F5;
+  transition: background 0.2s ease;
+}
+
+.record-row:hover {
+  background: #FAFAFA;
+}
+
+.record-row td {
+  /* Table data cell */
+  padding: 1rem;
+  vertical-align: middle;
+}
+
+/* Date Cell */
+.cell-date .date-display {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-day {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #2E7D32;
+}
+
+.date-full {
+  font-size: 0.75rem;
+  color: #9E9E9E;
+  margin-top: 0.125rem;
+}
+
+/* Metric Display */
+.metric-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.metric-display svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.cell-steps .metric-display svg {
+  color: #4CAF50;
+}
+
+.cell-workout .metric-display svg {
+  color: #66BB6A;
+}
+
+.cell-heart .metric-display svg {
+  color: #E53935;
+}
+
+.metric-value {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #424242;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  color: #9E9E9E;
+}
+
+/* Mini Progress Bar */
+.mini-progress {
+  height: 4px;
+  background: #E8F5E9;
+  border-radius: 2px;
+  margin-top: 0.5rem;
+  max-width: 100px;
+  overflow: hidden;
+}
+
+.mini-progress-bar {
+  height: 100%;
+  border-radius: 2px;
+}
+
+.steps-bar {
+  background: linear-gradient(90deg, #4CAF50 0%, #81C784 100%);
+}
+
+/* Action Buttons */
+.cell-actions {
+  text-align: right;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.action-btn {
+  /* Base action button */
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.action-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.edit-btn {
+  background: #E8F5E9;
+  color: #43A047;
+}
+
+.edit-btn:hover {
+  background: #43A047;
+  color: #FFFFFF;
+}
+
+.delete-btn {
+  background: #FFEBEE;
+  color: #E53935;
+}
+
+.delete-btn:hover {
+  background: #E53935;
+  color: #FFFFFF;
+}
+
+/* =========================================================================
+   RECORDS CARDS (Mobile)
+   ========================================================================= */
+
+.records-cards {
+  /* Hidden on desktop */
+  display: none;
+}
+
+.record-card {
+  /* Card container */
+  background: #FAFAFA;
+  border-radius: 16px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid #E8F5E9;
+}
+
+.record-card:last-child {
+  margin-bottom: 0;
+}
+
+.card-header {
+  /* Card header with date and actions */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #E8F5E9;
+}
+
+.card-date {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.card-metrics {
+  /* Metrics grid */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.card-metric {
+  /* Individual metric */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: #FFFFFF;
+  border-radius: 12px;
+}
+
+.card-metric svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.steps-metric svg {
+  color: #4CAF50;
+}
+
+.workout-metric svg {
+  color: #66BB6A;
+}
+
+.heart-metric svg {
+  color: #E53935;
+}
+
+.metric-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-metric .metric-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #424242;
+}
+
+.card-metric .metric-label {
+  font-size: 0.625rem;
+  color: #9E9E9E;
+  text-transform: uppercase;
+}
+
+/* =========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .records-section {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+  
+  /* Switch to card view */
+  .records-table {
+    display: none;
+  }
+  
+  .records-cards {
+    display: block;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .records-section {
+    padding: 1rem;
+  }
+  
+  .records-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .section-title {
+    font-size: 1.25rem;
+  }
+  
+  .card-metrics {
+    grid-template-columns: 1fr;
+  }
+  
+  .card-metric {
+    justify-content: flex-start;
+  }
+}
