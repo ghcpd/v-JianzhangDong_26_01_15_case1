@@ -30,7 +30,6 @@ You are a senior frontend engineer. Please generate a complete UI Case sample ac
      - Project overview and real-world use case.
      - List of features and explanation of how each feature is implemented.
      - Instructions on how to run `start.bat` to view the UI.
-     - Instructions on how to run `auto_test.js` to execute automated tests.
      - Any dependency installation or environment requirements (if applicable).
    - Documentation should be clear and easy to follow so anyone can replicate the setup.
 
