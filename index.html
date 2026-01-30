@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health & Fitness Tracker</title>
+  <!-- Design tokens: font + color imports are kept light; primary palette is green for wellness. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    /* Layout + spacing: generous padding and 12px radii for approachable feel. */
+    :root {
+      --bg: #f5fbf7;
+      --card: #ffffff;
+      --border: #e3f0e8;
+      --ink: #123326;
+      --muted: #4c6757;
+      --green: #30c27c;
+      --green-strong: #0b9a55;
+      --amber: #f9c56b;
+      --shadow: 0 20px 60px rgba(5, 60, 35, 0.08);
+      --radius: 12px;
+      --gap: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(48, 194, 124, 0.08), transparent 35%),
+                  radial-gradient(circle at 80% 0%, rgba(11, 154, 85, 0.06), transparent 30%),
+                  var(--bg);
+      color: var(--ink);
+      font-family: 'Manrope', 'Segoe UI', sans-serif;
+      line-height: 1.5;
+      padding: 32px;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3 { margin: 0; font-weight: 700; letter-spacing: -0.02em; }
+    h1 { font-size: 32px; }
+    h2 { font-size: 22px; }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--gap);
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-text {
+      max-width: 640px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(48, 194, 124, 0.12);
+      color: var(--green-strong);
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .grid { display: grid; gap: var(--gap); }
+    .grid.summary { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .metric .label {
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.01em;
+    }
+
+    .metric .value {
+      font-size: 26px;
+      font-weight: 700;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .bar-track {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: #eef6f0;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--green-strong));
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    label { font-weight: 600; font-size: 13px; color: var(--muted); }
+
+    input[type="date"], input[type="number"] {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #f8fdf9;
+      font-size: 14px;
+      color: var(--ink);
+      transition: border 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(48, 194, 124, 0.15);
+    }
+
+    .btn {
+      border: none;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, var(--green), var(--green-strong));
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(48, 194, 124, 0.35);
+    }
+
+    .btn-ghost {
+      background: #eff7f1;
+      color: var(--ink);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    th { color: var(--muted); font-weight: 700; }
+    tbody tr:hover { background: #f6fbf8; }
+
+    .record-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 4px 8px;
+      border-radius: 8px;
+      background: rgba(48, 194, 124, 0.12);
+      color: var(--green-strong);
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    .trend-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+
+    .spark {
+      height: 42px;
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    .spark div {
+      flex: 1;
+      border-radius: 8px 8px 4px 4px;
+      background: linear-gradient(180deg, rgba(48, 194, 124, 0.9), rgba(11, 154, 85, 0.7));
+      transition: transform 0.2s ease;
+    }
+
+    .spark div:hover { transform: translateY(-4px); }
+
+    @media (max-width: 720px) {
+      body { padding: 20px; }
+      .hero { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const { useMemo, useState } = React;
+
+    const initialRecords = [
+      { id: 1, date: "2026-01-12", steps: 8500, workoutMinutes: 45, heartRate: 118 },
+      { id: 2, date: "2026-01-13", steps: 10400, workoutMinutes: 55, heartRate: 123 },
+      { id: 3, date: "2026-01-14", steps: 7200, workoutMinutes: 35, heartRate: 112 }
+    ];
+
+    function formatNumber(n) {
+      return n.toLocaleString();
+    }
+
+    function SummaryBar({ label, value, unit, max }) {
+      const pct = max > 0 ? Math.min((value / max) * 100, 100) : 0;
+      return (
+        <div className="metric card">
+          <div className="label">{label}</div>
+          <div className="value">{formatNumber(value)} <span style={{ color: "var(--muted)", fontSize: "14px" }}>{unit}</span></div>
+          <div className="bar-track"><div className="bar-fill" style={{ width: `${pct}%` }} /></div>
+        </div>
+      );
+    }
+
+    function Sparkline({ data, label }) {
+      const max = Math.max(...data.map(d => d.value), 1);
+      return (
+        <div className="card">
+          <div className="label" style={{ marginBottom: 8 }}>{label}</div>
+          <div className="spark">
+            {data.map((d) => (
+              <div key={d.date} style={{ height: `${(d.value / max) * 100}%`, minHeight: 8 }} title={`${d.date}: ${d.value}`} />
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    function App() {
+      const [records, setRecords] = useState(initialRecords);
+      const [form, setForm] = useState({
+        date: new Date().toISOString().slice(0, 10),
+        steps: "",
+        workoutMinutes: "",
+        heartRate: ""
+      });
+      const [editingId, setEditingId] = useState(null);
+      const [editDraft, setEditDraft] = useState({});
+
+      const sorted = useMemo(() => [...records].sort((a, b) => b.date.localeCompare(a.date)), [records]);
+
+      const summary = useMemo(() => {
+        const totalSteps = records.reduce((acc, r) => acc + Number(r.steps || 0), 0);
+        const totalWorkout = records.reduce((acc, r) => acc + Number(r.workoutMinutes || 0), 0);
+        const avgHeart = records.length ? Math.round(records.reduce((acc, r) => acc + Number(r.heartRate || 0), 0) / records.length) : 0;
+        const maxSteps = records.reduce((m, r) => Math.max(m, r.steps), 0);
+        const maxMinutes = records.reduce((m, r) => Math.max(m, r.workoutMinutes), 0);
+        return { totalSteps, totalWorkout, avgHeart, maxSteps, maxMinutes };
+      }, [records]);
+
+      function handleChange(e) {
+        const { name, value } = e.target;
+        setForm((f) => ({ ...f, [name]: value }));
+      }
+
+      function handleAdd(e) {
+        e.preventDefault();
+        if (!form.date || !form.steps || !form.workoutMinutes || !form.heartRate) return;
+        const newRecord = {
+          id: Date.now(),
+          date: form.date,
+          steps: Number(form.steps),
+          workoutMinutes: Number(form.workoutMinutes),
+          heartRate: Number(form.heartRate)
+        };
+        setRecords((list) => [...list, newRecord]);
+        setForm((f) => ({ ...f, steps: "", workoutMinutes: "", heartRate: "" }));
+      }
+
+      function startEdit(record) {
+        setEditingId(record.id);
+        setEditDraft({ ...record });
+      }
+
+      function handleEditChange(e) {
+        const { name, value } = e.target;
+        setEditDraft((d) => ({ ...d, [name]: value }));
+      }
+
+      function saveEdit() {
+        setRecords((list) => list.map((r) => r.id === editingId ? { ...r, ...editDraft, steps: Number(editDraft.steps), workoutMinutes: Number(editDraft.workoutMinutes), heartRate: Number(editDraft.heartRate) } : r));
+        setEditingId(null);
+      }
+
+      function cancelEdit() {
+        setEditingId(null);
+        setEditDraft({});
+      }
+
+      function deleteRecord(id) {
+        setRecords((list) => list.filter((r) => r.id !== id));
+      }
+
+      const sparkData = sorted.map((r) => ({ date: r.date.slice(5), value: r.steps }));
+      const sparkMinutes = sorted.map((r) => ({ date: r.date.slice(5), value: r.workoutMinutes }));
+
+      return (
+        <div className="page">
+          <div className="hero">
+            <div className="hero-text">
+              <div className="pill">Health & Wellness Dashboard</div>
+              <h1>Daily Health & Fitness Tracker</h1>
+              <p style={{ color: "var(--muted)", marginTop: 8 }}>Log steps, workout minutes, and heart rate to spot patterns quickly. Lightweight React UI with zero build steps: open and track.</p>
+            </div>
+            <div className="card" style={{ minWidth: 240 }}>
+              <div className="label">Today</div>
+              <div className="value">{new Date().toLocaleDateString()}</div>
+              <div className="tag">Live preview · Client-only</div>
+            </div>
+          </div>
+
+          <div className="grid summary">
+            <SummaryBar label="Total Steps" value={summary.totalSteps} unit="steps" max={summary.maxSteps || 12000} />
+            <SummaryBar label="Workout Duration" value={summary.totalWorkout} unit="mins" max={summary.maxMinutes || 60} />
+            <div className="metric card">
+              <div className="label">Average Heart Rate</div>
+              <div className="value">{summary.avgHeart} <span style={{ color: "var(--muted)", fontSize: "14px" }}>bpm</span></div>
+              <div className="bar-track"><div className="bar-fill" style={{ width: `${Math.min((summary.avgHeart / 180) * 100, 100)}%`, background: "linear-gradient(90deg, #f9c56b, #f39b4a)" }} /></div>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="section-title">
+              <h2>Add Daily Health Record</h2>
+              <span className="tag">Feature: Add</span>
+            </div>
+            <form onSubmit={handleAdd} style={{ marginTop: 12 }}>
+              <div className="form-grid">
+                <div>
+                  <label>Date</label>
+                  <input type="date" name="date" value={form.date} onChange={handleChange} required />
+                </div>
+                <div>
+                  <label>Steps</label>
+                  <input type="number" name="steps" placeholder="e.g., 9000" value={form.steps} onChange={handleChange} min="0" required />
+                </div>
+                <div>
+                  <label>Workout Minutes</label>
+                  <input type="number" name="workoutMinutes" placeholder="e.g., 45" value={form.workoutMinutes} onChange={handleChange} min="0" required />
+                </div>
+                <div>
+                  <label>Avg Heart Rate (bpm)</label>
+                  <input type="number" name="heartRate" placeholder="e.g., 118" value={form.heartRate} onChange={handleChange} min="0" required />
+                </div>
+              </div>
+              <div style={{ marginTop: 14, display: "flex", justifyContent: "flex-end" }}>
+                <button type="submit" className="btn btn-primary">Add Record</button>
+              </div>
+            </form>
+          </div>
+
+          <div className="card">
+            <div className="section-title">
+              <h2>Health Records</h2>
+              <span className="tag">Features: View · Edit · Delete</span>
+            </div>
+            <div style={{ marginTop: 10, overflowX: "auto" }}>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Steps</th>
+                    <th>Workout (min)</th>
+                    <th>Avg HR (bpm)</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sorted.map((r) => (
+                    <tr key={r.id}>
+                      <td>{r.date}</td>
+                      <td>{editingId === r.id ? (
+                        <input type="number" name="steps" value={editDraft.steps} onChange={handleEditChange} style={{ width: 120 }} />
+                      ) : formatNumber(r.steps)}</td>
+                      <td>{editingId === r.id ? (
+                        <input type="number" name="workoutMinutes" value={editDraft.workoutMinutes} onChange={handleEditChange} style={{ width: 120 }} />
+                      ) : `${r.workoutMinutes} min`}</td>
+                      <td>{editingId === r.id ? (
+                        <input type="number" name="heartRate" value={editDraft.heartRate} onChange={handleEditChange} style={{ width: 120 }} />
+                      ) : `${r.heartRate} bpm`}</td>
+                      <td>
+                        <div className="record-actions">
+                          {editingId === r.id ? (
+                            <>
+                              <button className="btn btn-primary" onClick={saveEdit} type="button">Save</button>
+                              <button className="btn btn-ghost" onClick={cancelEdit} type="button">Cancel</button>
+                            </>
+                          ) : (
+                            <>
+                              <button className="btn btn-ghost" onClick={() => startEdit(r)} type="button">Edit</button>
+                              <button className="btn btn-ghost" onClick={() => deleteRecord(r.id)} type="button">Delete</button>
+                            </>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="section-title">
+              <h2>Health Summary Dashboard</h2>
+              <span className="tag">Feature: Summaries & Trends</span>
+            </div>
+            <div className="trend-row" style={{ marginTop: 12 }}>
+              <Sparkline data={sparkData} label="Steps trend" />
+              <Sparkline data={sparkMinutes} label="Workout minutes trend" />
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>
